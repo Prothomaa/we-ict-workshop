@@ -1,3 +1,4 @@
+/* Base */
 body {
   margin: 0;
   font-family: system-ui, sans-serif;
@@ -5,7 +6,11 @@ body {
   color: #111;
 }
 
+/* Navbar */
 nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,38 +19,74 @@ nav {
   box-shadow: 0 2px 10px rgba(0,0,0,.05);
 }
 
-.logo {
+.logo1 {
   font-weight: 700;
   font-size: 18px;
 }
 
-.hero {
-  padding: 90px 20px;
-  text-align: center;
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
-  color: white;
-}
-
+/* HERO BANNER */
 .hero2 {
-  padding: 120px 20px;
+  position: relative;
+  padding: 140px 20px;
   text-align: center;
   color: white;
+  overflow: hidden;
 
-  background:
-    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
-    url("assets/logo.jpeg");
-
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background: url("assets/logo.jpeg") center/cover no-repeat;
 }
 
+/* DARK OVERLAY */
+.hero2::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.78),
+    rgba(37, 99, 235, 0.78)
+  );
+  z-index: 0;
+}
+
+/* SOFT GLOW */
+.hero2::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top,
+    rgba(255,255,255,0.18),
+    transparent 60%
+  );
+  z-index: 0;
+}
+
+/* TEXT ABOVE OVERLAY */
+.hero2 * {
+  position: relative;
+  z-index: 1;
+}
+
+/* HERO TEXT */
+.hero2 h1 {
+  font-size: 42px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  text-shadow: 0 10px 30px rgba(0,0,0,.45);
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.hero2 p {
+  font-size: 18px;
+  opacity: .95;
+  animation: fadeInUp 1.3s ease-out forwards;
+}
 
 .meta {
-  opacity: .9;
   margin-bottom: 25px;
 }
 
+/* Sections */
 .section {
   max-width: 900px;
   margin: auto;
@@ -56,21 +97,24 @@ nav {
   background: #eef2ff;
 }
 
+/* Cards */
 .cards {
   display: flex;
   gap: 30px;
   justify-content: center;
+  flex-wrap: wrap;
   padding: 40px 20px;
 }
 
 .card {
   background: white;
   padding: 30px;
-  border-radius: 14px;
+  border-radius: 16px;
   width: 260px;
   box-shadow: 0 10px 30px rgba(0,0,0,.08);
 }
 
+/* Buttons */
 .btn {
   background: #2563eb;
   color: white;
@@ -78,20 +122,37 @@ nav {
   border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
+  display: inline-block;
 }
 
 .btn.big {
   font-size: 18px;
   padding: 16px 36px;
+  animation: fadeInUp 1.6s ease-out forwards;
 }
 
-.btn.ghost {
-  background: transparent;
-  color: #2563eb;
-}
-
+/* Footer */
 footer {
   text-align: center;
   padding: 30px;
   background: #e5e7eb;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .hero2 h1 {
+    font-size: 30px;
+  }
 }
