@@ -26,6 +26,21 @@ nav {
   color: white;
 }
 
+.hero2 {
+  padding: 120px 20px;
+  text-align: center;
+  color: white;
+
+  background:
+    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+    url("assets/hero.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+
 .meta {
   opacity: .9;
   margin-bottom: 25px;
